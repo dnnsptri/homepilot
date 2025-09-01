@@ -32,7 +32,7 @@ export default function Login() {
       {/* Header Navigation */}
       <header className="container mx-auto px-4 py-6">
         <div className="flex justify-between items-center">
-          <Link href="/" className="text-2xl font-bold text-gray-900 hover:text-gray-700 transition-colors">
+          <Link href="/" className="text-2xl font-bold text-[#001E46] hover:text-[#001E46] transition-colors">
             <img src="/images/HP_logo.svg" alt="HomePilot" className="h-6" />
           </Link>
           <nav className="flex space-x-6">
@@ -50,7 +50,7 @@ export default function Login() {
       <div className="container mx-auto px-4 py-16">
         <div className="max-w-md mx-auto">
           <div className="text-center mb-8">
-            <h1 className="text-3xl font-bold text-gray-900 mb-2">
+            <h1 className="text-3xl font-bold text-[#001E46] mb-2">
               Welcome back
             </h1>
             <p className="text-gray-600">
@@ -61,7 +61,7 @@ export default function Login() {
           <div className="bg-white rounded-2xl shadow-xl p-8">
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+                <label htmlFor="email" className="block text-sm font-medium text-[#001E46] mb-2">
                   Email
                 </label>
                 <input
@@ -77,7 +77,7 @@ export default function Login() {
               </div>
 
               <div>
-                <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-2">
+                <label htmlFor="password" className="block text-sm font-medium text-[#001E46] mb-2">
                   Password
                 </label>
                 <input

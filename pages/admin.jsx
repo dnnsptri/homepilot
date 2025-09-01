@@ -154,7 +154,7 @@ export default function Admin() {
     return (
       <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-3xl font-bold text-gray-900 mb-4">🎣 HomePilot Admin</h1>
+          <h1 className="text-3xl font-bold text-[#001E46] mb-4">🎣 HomePilot Admin</h1>
           <p className="text-gray-600 mb-4">Access denied</p>
           <p className="text-sm text-gray-500">Add ?admin=true to the URL to access admin panel</p>
         </div>
@@ -177,7 +177,7 @@ export default function Admin() {
     return (
       <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-3xl font-bold text-gray-900 mb-4">🎣 HomePilot Admin</h1>
+          <h1 className="text-3xl font-bold text-[#001E46] mb-4">🎣 HomePilot Admin</h1>
           <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
             {error}
           </div>
@@ -197,7 +197,7 @@ export default function Admin() {
       {/* Header */}
       <header className="container mx-auto px-4 py-6">
         <div className="flex justify-between items-center">
-          <div className="text-2xl font-bold text-gray-900">
+          <div className="text-2xl font-bold text-[#001E46]">
             <img src="/images/HP_logo.svg" alt="HomePilot" className="h-6" />
           </div>
           <div className="flex items-center space-x-4">
@@ -281,12 +281,12 @@ export default function Admin() {
                         className={`hover:bg-gray-50 transition-colors ${getScoreColor(submission.score)}`}
                       >
                         <td className="px-6 py-4 whitespace-nowrap">
-                          <div className="text-sm font-medium text-gray-900">
+                          <div className="text-sm font-medium text-[#001E46]">
                             {submission.name}
                           </div>
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap">
-                          <div className="text-sm text-gray-900">
+                          <div className="text-sm text-[#001E46]">
                             {submission.email}
                           </div>
                         </td>

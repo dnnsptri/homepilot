@@ -113,7 +113,7 @@ export default function Home() {
       {/* Header Navigation */}
       <header className="container mx-auto px-4 py-6">
         <div className="flex justify-between items-center">
-          <div className="text-2xl font-bold text-gray-900">
+          <div className="text-2xl font-bold text-[#001E46]">
             <img src="/images/HP_logo.svg" alt="HomePilot" className="h-6" />
           </div>
           <nav className="flex space-x-6">
@@ -130,13 +130,13 @@ export default function Home() {
       {/* Hero Section */}
       <div className="container mx-auto px-4 py-16">
         <div className="text-center max-w-4xl mx-auto">
-          <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
+          <h1 className="text-5xl md:text-6xl font-bold text-[#001E46] mb-6">
             Gefeliciteerd! Er is iemand die uw huis wil kopen.
           </h1>
           
           <p className="text-xl md:text-2xl text-gray-600 mb-8 leading-relaxed">
-          Zonder directe inzet van een makelaar.<br />
-          En zonder verplichtingen, gewoon direct contact.<br /><br />
+          Ontvang vrijblijvend het bod van deze geïnteresseerde.<br />
+          Uiteraard zonder verkoopverplichting en zonder direct contact met de potentiële koper.<br /><br />
           </p>
 
           {/* Signup Form */}
@@ -193,7 +193,7 @@ export default function Home() {
                 </button>
                 
                 <p className="text-xs text-gray-500 text-center mt-3">
-                  Uw gegevens worden uitsluitend gebruikt om u over deze koper te informeren.
+                  Uw gegevens worden uitsluitend gebruikt om u verder over deze potentiële koper te informeren.
                 </p>
               </form>
             </div>
@@ -215,7 +215,7 @@ export default function Home() {
       {/* Footer */}
       <footer className="container mx-auto px-4 py-8 text-center">
         <p className="text-gray-600 text-sm">
-          © {new Date().getFullYear()} HomePilot. Uw woning. Hun droom.
+          © {new Date().getFullYear()} HomePilot. Uw woning, hun droom.
         </p>
       </footer>
     </div>

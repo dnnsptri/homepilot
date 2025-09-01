@@ -6,15 +6,15 @@ export default function About() {
       {/* Header Navigation */}
       <header className="container mx-auto px-4 py-6">
         <div className="flex justify-between items-center">
-          <Link href="/" className="text-2xl font-bold text-gray-900 hover:text-gray-700 transition-colors">
+          <Link href="/" className="text-2xl font-bold text-[#001E46] hover:text-[#001E46] transition-colors">
             <img src="/images/HP_logo.svg" alt="HomePilot" className="h-6" />
           </Link>
           <nav className="flex space-x-6">
-            <Link href="/about" className="text-[#0C5CD3] font-medium hover:text-[#011E46] hover:underline transition-colors">
-              About
+            <Link href="/about" className="text-[#011E46] font-medium underline transition-colors">
+              Over HomePilot
             </Link>
             <span className="text-gray-400 cursor-not-allowed">
-              Log in
+              Inloggen
             </span>
           </nav>
         </div>
@@ -23,35 +23,32 @@ export default function About() {
       {/* About Content */}
       <div className="container mx-auto px-4 py-16">
         <div className="max-w-3xl mx-auto">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-8">
-              Dé persoonlijke schakel tussen koper en verkoper
+          <h1 className="text-4xl md:text-5xl font-bold text-[#001E46] mb-8">
+              HomePilot, dé link tussen koper en verkoper
           </h1>
           
-          <div className="prose prose-lg text-gray-700 space-y-6">
+          <div className="prose prose-lg text-[#001E46] space-y-6">
             <p>
-              HomePilot helpt u de echte interesse te zien.
-              Niet de ruis van makelaarsplatforms, niet de eindeloze vergelijkingen.
-              Gewoon: de juiste koper, voor uw huis, op dit moment.
+              HomePilot brengt potentiële kopers en verkopers bij elkaar.
+              Niet via de ruis van makelaarsplatforms, niet de eindeloze vergelijkingen.
+              Maar gewoon de juiste koper, voor uw huis, op dit moment.
             </p>
 
             <p>
-              Ergens onderweg werd een huis verkopen ingewikkeld.
+              Vroeger vond u misschien nog weleens een briefje in de bus van iemnand die uw huis geweldig vond.
+              Een huis kopen of verkopen aan de juiste persoon werd steeds ingewikkelder:
               Kosten stapelden zich op. Bezichtigingen werden procedures.
-              En we verloren de eenvoud van iemand die zegt: "Dit is precies het huis dat ik zoek."
+              We verloren de eenvoud van iemand die zegt: "Dit is precies het huis dat ik zoek."
             </p>
 
             <p>
-              HomePilot is onze stille rebellie daartegen.
+              En HomePilot helpt hierbij:< br />
+              - We zijn geen marktplaats.< br />
+              - Geen dashboard vol statistieken.< br />
+              -Het is de kortere lijn tussen verkoper en koper.
             </p>
 
             <p>
-              Het is geen marktplaats.
-              Het is geen dashboard vol statistieken.
-              Het is een directe lijn tussen verkoper en koper.
-            </p>
-
-            <p>
-              We vragen niet om wéér een advertentie.
               We vragen om een simpel signaal:
               Bent u bereid om te praten, als de interesse écht is?
             </p>
@@ -81,7 +78,7 @@ export default function About() {
             </p>
 
             <p className="text-xl leading-relaxed font-semibold">
-              Dit is HomePilot. Uw woning. Hun droom.
+              Dit is HomePilot. Uw woning, Hun droom.
             </p>
           </div>
 
