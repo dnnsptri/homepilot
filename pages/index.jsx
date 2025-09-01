@@ -109,40 +109,42 @@ export default function Home() {
   */
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
-      {/* Header Navigation */}
-      <header className="container mx-auto px-4 py-6">
-        <div className="flex justify-between items-center">
-          <div className="text-2xl font-bold text-[#001E46]">
-            <img src="/images/HP_logo.svg" alt="HomePilot" className="h-6" />
-          </div>
-          <nav className="flex space-x-6">
-            <a href="/about" className="text-[#0C5CD3] hover:text-[#011E46] hover:underline transition-colors">
-              Over HomePilot
-            </a>
-            <span className="text-gray-400 cursor-not-allowed">
-              Inloggen
-            </span>
-          </nav>
-        </div>
-      </header>
-
+    <div className="min-h-screen">
       {/* Hero Section */}
-      <div className="container mx-auto px-4 py-16">
-        <div className="text-center max-w-4xl mx-auto">
-          <h1 className="text-5xl md:text-6xl font-bold text-[#001E46] mb-6">
+      <section className="bg-[#32608E] text-white pb-32">
+        {/* Header Navigation */}
+        <header className="container mx-auto px-4 py-6">
+          <div className="flex justify-between items-center">
+            <div className="text-2xl font-bold text-white">
+              <img src="/images/HP_logo.svg" alt="HomePilot" className="h-6" />
+            </div>
+            <nav className="flex space-x-6">
+              <a href="/about" className="text-white hover:text-white hover:underline transition-colors">
+                Over HomePilot
+              </a>
+            </nav>
+          </div>
+        </header>
+
+        {/* Hero Content */}
+        <div className="container mx-auto px-4 pt-16 text-center">
+          <h1 className="text-5xl md:text-6xl font-bold text-white mb-8 max-w-[900px] mx-auto">
             Gefeliciteerd! Er is iemand die uw huis wil kopen.
           </h1>
           
-          <p className="text-xl md:text-2xl text-gray-600 mb-8 leading-relaxed">
-          Ontvang vrijblijvend het bod van deze geïnteresseerde.<br />
-          Uiteraard zonder verkoopverplichting en zonder direct contact met de potentiële koper.<br /><br />
+          <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto leading-relaxed mb-0 intro">
+            Ontvang vrijblijvend het bod van deze geïnteresseerde.<br />
+            Uiteraard zonder verkoopverplichting en zonder direct contact met de potentiële koper.<br /><br />
           </p>
+        </div>
+      </section>
 
-          {/* Signup Form */}
+      {/* Form Section - Positioned over the edge */}
+      <div className="relative -mt-32 mb-16">
+        <div className="max-w-[600px] mx-auto px-4">
           {showForm && (
-            <div className="max-w-md mx-auto">
-              <form onSubmit={handleSubmit} className="space-y-4 max-w-md w-full bg-white p-8 shadow rounded">
+            <div className="bg-white p-8 shadow-2xl rounded-lg">
+              <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
                   <label className="sr-only" htmlFor="salutation">Aanhef</label>
                   <select
@@ -163,7 +165,7 @@ export default function Home() {
                   name="name" 
                   value={form.name} 
                   onChange={handleChange} 
-                  placeholder="Uw achternaam" 
+                  placeholder="Achternaam" 
                   required 
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600"
                 />
@@ -172,7 +174,7 @@ export default function Home() {
                   type="email" 
                   value={form.email} 
                   onChange={handleChange} 
-                  placeholder="Uw e-mail adres" 
+                  placeholder="E-mailadres" 
                   required 
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600"
                 />
@@ -180,26 +182,24 @@ export default function Home() {
                   name="address" 
                   value={form.address} 
                   onChange={handleChange} 
-                  placeholder="Uw adres & woonplaats" 
+                  placeholder="Straatnaam, nummer, postcode & woonplaats" 
                   required 
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600"
                 />
                 <button 
                   type="submit" 
                   disabled={submitting} 
-                  className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold py-4 px-6 rounded-lg hover:from-blue-700 hover:to-indigo-700 focus:ring-4 focus:ring-blue-300 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed transform hover:scale-105 active:scale-95"
+                  className="w-full bg-[#0C5CD3] text-white font-semibold py-4 px-6 rounded-lg hover:bg-[#001E46] focus:ring-4 focus:ring-blue-300 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed transform hover:scale-105 active:scale-95"
                 >
                   {submitting ? 'Versturen...' : submitted ? 'Verstuurd' : 'Ja, laat me vrijblijvend meer weten'}
                 </button>
                 
                 <p className="text-xs text-gray-500 text-center mt-3">
-                  Uw gegevens worden uitsluitend gebruikt om u verder over deze potentiële koper te informeren.
+                  Uw gegevens worden uitsluitend gebruikt om u verder te informeren<br />over deze potentiële koper.
                 </p>
               </form>
             </div>
           )}
-
-          {/* Follow-up Form temporarily disabled */}
         </div>
       </div>
 
@@ -213,7 +213,7 @@ export default function Home() {
       )}
 
       {/* Footer */}
-      <footer className="container mx-auto px-4 py-8 text-center">
+      <footer className="container mx-auto px-4 py-8 text-center mt-24">
         <p className="text-gray-600 text-sm">
           © {new Date().getFullYear()} HomePilot. Uw woning, hun droom.
         </p>
