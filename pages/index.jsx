@@ -15,14 +15,10 @@ const supabase = createClient(
 export default function Home() {
   const [showForm, setShowForm] = useState(true)
   const [form, setForm] = useState({
-    salutation: '',      // Aanhef
+    salutation: '',
     name: '',
     email: '',
-    address: '',         // Was "message" before, rename for clarity
-    // LP2 fields (not shown in LP1 UI):
-    willing_to_sell: '', // ja | misschien | nee
-    price_expectation: '',
-    move_timing: ''      // <3m | 3-6m | 6-12m | later | onbekend
+    address: ''
   })
   const [submitting, setSubmitting] = useState(false)
   const [submitted, setSubmitted] = useState(false)
@@ -39,15 +35,11 @@ export default function Home() {
 
     try {
       const payload = {
-        ref: 'LP1',            // Will be 'LP2' in the copy
+        ref: 'LP1',
         salutation: form.salutation,
         name: form.name.trim(),
         email: form.email.trim(),
-        address: form.address.trim(),
-        // LP2 fields — will stay null in LP1
-        willing_to_sell: null,
-        price_expectation: null,
-        move_timing: null
+        address: form.address.trim()
       }
 
       const { error } = await supabase
@@ -61,10 +53,7 @@ export default function Home() {
           salutation: '',
           name: '',
           email: '',
-          address: '',
-          willing_to_sell: '',
-          price_expectation: '',
-          move_timing: ''
+          address: ''
         })
       } else {
         console.log('New signup saved:', payload)
@@ -74,10 +63,7 @@ export default function Home() {
           salutation: '',
           name: '',
           email: '',
-          address: '',
-          willing_to_sell: '',
-          price_expectation: '',
-          move_timing: ''
+          address: ''
         })
         
         // Reset button state after 2 seconds
@@ -90,10 +76,7 @@ export default function Home() {
         salutation: '',
         name: '',
         email: '',
-        address: '',
-        willing_to_sell: '',
-        price_expectation: '',
-        move_timing: ''
+        address: ''
       })
     } finally {
       setSubmitting(false)
