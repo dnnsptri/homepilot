@@ -133,7 +133,7 @@ export default function LP2() {
                 </div>
 
                 <button type="submit" disabled={submitting} className="w-full bg-[#30A661] text-white font-semibold py-4 px-6 rounded-lg hover:bg-[#0B2918] focus:ring-4 focus:ring-blue-300 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed transform hover:scale-105 active:scale-95">
-                  {submitting ? 'Versturen...' : submitted ? 'Verstuurd' : 'Opslaan'}
+                  {submitting ? 'Versturen...' : submitted ? 'Verstuurd' : 'Ja, laat me vrijblijvend meer weten'}
                 </button>
                 <p className="text-xs text-gray-500 text-center mt-3">Uw gegevens worden uitsluitend gebruikt om u verder te informeren.</p>
               </form>
