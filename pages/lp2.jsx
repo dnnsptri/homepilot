@@ -86,7 +86,7 @@ export default function LP2() {
         </header>
 
         <div className="container mx-auto px-4 pt-16 text-center">
-          <h1 className="text-5xl md:text-6xl font-bold text-white mb-8 max-w-[900px] mx-auto">Uw woning trekt aandacht!<br /> Er is iemand die interesse heeft in uw huis.</h1>
+          <h1 className="text-5xl md:text-6xl font-bold text-white mb-8 max-w-[900px] mx-auto">Uw woning trekt aandacht!<br /> Er is iemand die serieuze interesse heeft in uw huis.</h1>
           <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto leading-relaxed mb-0 intro">
             Ontvang vrijblijvend het bod van deze geïnteresseerde.<br />
             Uiteraard zonder verkoopverplichting en zonder direct contact met de potentiële koper.<br /><br />
