@@ -8,6 +8,7 @@ const supabase = createClient(
 
 export default function LP2() {
   const [showForm, setShowForm] = useState(true)
+  const [showExtras, setShowExtras] = useState(false)
   const [form, setForm] = useState({
     salutation: '',
     name: '',
@@ -27,6 +28,11 @@ export default function LP2() {
 
   async function handleSubmit(e) {
     e.preventDefault()
+    // If extras not shown yet, move to step 2 instead of submitting
+    if (!showExtras) {
+      setShowExtras(true)
+      return
+    }
     setSubmitting(true)
     setToast({ show: false, type: '', message: '' })
 
@@ -53,6 +59,7 @@ export default function LP2() {
         setSubmitted(true)
         setToast({ show: true, type: 'success', message: 'Bedankt! We nemen contact op.' })
         setForm({ salutation: '', name: '', email: '', address: '', willing_to_sell: '', price_expectation: '', move_timing: '' })
+        setShowExtras(false)
         setTimeout(() => setSubmitted(false), 2000)
       }
     } catch (err) {
@@ -93,6 +100,7 @@ export default function LP2() {
           {showForm && (
             <div className="bg-white p-8 shadow-2xl rounded-lg">
               <form onSubmit={handleSubmit} className="space-y-4">
+                {/* Step 1 fields */}
                 <div>
                   <label className="sr-only" htmlFor="salutation">Aanhef</label>
                   <select id="salutation" name="salutation" value={form.salutation} onChange={handleChange} required className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600">
@@ -106,35 +114,46 @@ export default function LP2() {
                 <input name="email" type="email" value={form.email} onChange={handleChange} placeholder="E-mailadres" required className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600" />
                 <textarea name="address" value={form.address} onChange={handleChange} placeholder="Straatnaam, nummer, postcode & woonplaats" required className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600" />
 
-                {/* LP2 extra fields */}
-                <div>
-                  <label className="block text-sm font-medium text-[#001E46] mb-2">Bent u bereid te verkopen?</label>
-                  <select name="willing_to_sell" value={form.willing_to_sell} onChange={handleChange} className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600">
-                    <option value="">Selecteer</option>
-                    <option value="ja">Ja</option>
-                    <option value="misschien">Misschien</option>
-                    <option value="nee">Nee</option>
-                  </select>
-                </div>
-                <div className="relative">
-                  <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500">€</span>
-                  <input name="price_expectation" value={form.price_expectation} onChange={handleChange} placeholder="Prijsverwachting (optioneel)" className="w-full pl-8 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600" />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-[#001E46] mb-2">Hoe snel zou u kunnen verhuizen?</label>
-                  <select name="move_timing" value={form.move_timing} onChange={handleChange} className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600">
-                    <option value="">Selecteer</option>
-                    <option value="<3m">Binnen 3 maanden</option>
-                    <option value="3-6m">3-6 maanden</option>
-                    <option value="6-12m">6-12 maanden</option>
-                    <option value=">12m">Later dan 12 maanden</option>
-                    <option value="onbekend">Onbekend</option>
-                  </select>
-                </div>
+                {/* Step 2 fields (revealed after Volgende) */}
+                {showExtras && (
+                  <>
+                    <div>
+                      <label className="block text-sm font-medium text-[#001E46] mb-2">Bent u bereid te verkopen?</label>
+                      <select name="willing_to_sell" value={form.willing_to_sell} onChange={handleChange} className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600">
+                        <option value="">Selecteer</option>
+                        <option value="ja">Ja</option>
+                        <option value="misschien">Misschien</option>
+                        <option value="nee">Nee</option>
+                      </select>
+                    </div>
+                    <div className="relative">
+                      <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500">€</span>
+                      <input name="price_expectation" value={form.price_expectation} onChange={handleChange} placeholder="Prijsverwachting (optioneel)" className="w-full pl-8 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600" />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-[#001E46] mb-2">Hoe snel zou u kunnen verhuizen?</label>
+                      <select name="move_timing" value={form.move_timing} onChange={handleChange} className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600">
+                        <option value="">Selecteer</option>
+                        <option value="<3m">Binnen 3 maanden</option>
+                        <option value="3-6m">3-6 maanden</option>
+                        <option value="6-12m">6-12 maanden</option>
+                        <option value=">12m">Later dan 12 maanden</option>
+                        <option value="onbekend">Onbekend</option>
+                      </select>
+                    </div>
+                  </>
+                )}
 
-                <button type="submit" disabled={submitting} className="w-full bg-[#30A661] text-white font-semibold py-4 px-6 rounded-lg hover:bg-[#0B2918] focus:ring-4 focus:ring-blue-300 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed transform hover:scale-105 active:scale-95">
-                  {submitting ? 'Versturen...' : submitted ? 'Verstuurd' : 'Ja, laat me vrijblijvend meer weten'}
-                </button>
+                {/* CTA */}
+                {!showExtras ? (
+                  <button type="button" onClick={() => setShowExtras(true)} className="w-full bg-[#30A661] text-white font-semibold py-4 px-6 rounded-lg hover:bg-[#0B2918] focus:ring-4 focus:ring-blue-300 transition-all duration-200">
+                    Volgende
+                  </button>
+                ) : (
+                  <button type="submit" disabled={submitting} className="w-full bg-[#30A661] text-white font-semibold py-4 px-6 rounded-lg hover:bg-[#0B2918] focus:ring-4 focus:ring-blue-300 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed transform hover:scale-105 active:scale-95">
+                    {submitting ? 'Versturen...' : submitted ? 'Verstuurd' : 'Opslaan'}
+                  </button>
+                )}
                 <p className="text-xs text-gray-500 text-center mt-3">Uw gegevens worden uitsluitend gebruikt om u verder te informeren.</p>
               </form>
             </div>
