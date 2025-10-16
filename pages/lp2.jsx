@@ -114,7 +114,7 @@ export default function LP2() {
             className="bg-white text-[#3D6B53] font-semibold py-4 px-8 rounded-lg hover:bg-gray-100 focus:ring-4 focus:ring-white/30 transition-all duration-200 transform hover:scale-105 active:scale-95 shadow-lg"
             style={{ marginBottom: '72px' }}
           >
-            Ontvang vrijblijvend meer informatie
+            Ik ben benieuwd!
           </button>
         </div>
         <div className="max-w-4xl mx-auto mb-8">
