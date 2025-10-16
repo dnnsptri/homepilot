@@ -29,6 +29,13 @@ export default function LP2() {
     setForm({ ...form, [e.target.name]: e.target.value })
   }
 
+  const scrollToForm = () => {
+    const formSection = document.getElementById('form-section')
+    if (formSection) {
+      formSection.scrollIntoView({ behavior: 'smooth' })
+    }
+  }
+
   async function handleSubmit(e) {
     e.preventDefault()
     
@@ -97,9 +104,18 @@ export default function LP2() {
 
         <div className="container mx-auto px-4 pt-16 text-center">
           <h1 className="text-5xl md:text-6xl font-bold text-white mb-8 max-w-[900px] mx-auto">Uw woning trekt aandacht!<br /> Er is iemand die serieuze interesse heeft in uw huis.</h1>
-          <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto leading-relaxed mb-0 intro">
+          <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto leading-relaxed mb-8 intro">
             Ontvang vrijblijvend het bod van deze geïnteresseerde. Uiteraard zonder verkoopverplichting en zonder direct contact met de potentiële koper.<br /><br />
           </p>
+          
+          {/* Scroll to form button */}
+          <button 
+            onClick={scrollToForm}
+            className="bg-white text-[#3D6B53] font-semibold py-4 px-8 rounded-lg hover:bg-gray-100 focus:ring-4 focus:ring-white/30 transition-all duration-200 transform hover:scale-105 active:scale-95 shadow-lg"
+            style={{ marginBottom: '72px' }}
+          >
+            Ontvang vrijblijvend meer informatie
+          </button>
         </div>
         <div className="max-w-4xl mx-auto mb-8">
             <img 
@@ -108,10 +124,11 @@ export default function LP2() {
               className="w-full h-auto rounded-lg shadow-2xl"
             />
           </div>
+          
       </section>
 
       {/* Form over edge */}
-      <div className="relative -mt-32 mb-16">
+      <div id="form-section" className="relative -mt-32 mb-16">
         <div className="max-w-[600px] mx-auto px-4">
           {showForm && (
             <div className="bg-white p-8 shadow-2xl rounded-lg">
