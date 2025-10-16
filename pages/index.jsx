@@ -116,8 +116,7 @@ export default function Home() {
           </h1>
           
           <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto leading-relaxed mb-0 intro">
-            Ontvang vrijblijvend het bod van deze geïnteresseerde.<br />
-            Uiteraard zonder verkoopverplichting en zonder direct contact met de potentiële koper.<br /><br />
+            Ontvang vrijblijvend het bod van deze geïnteresseerde. Uiteraard zonder verkoopverplichting en zonder direct contact met de potentiële koper.<br /><br />
           </p>
         </div>
       </section>

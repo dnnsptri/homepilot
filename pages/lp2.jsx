@@ -1,6 +1,9 @@
 import { useState } from 'react'
 import { createClient } from '@supabase/supabase-js'
 
+// Hero image
+const heroImage = '/images/HP_header2.png'
+
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://hqazuexnfadbykiyzakr.supabase.co',
   process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || 'fallback_key'
@@ -49,19 +52,18 @@ export default function LP2() {
         salutation: form.salutation,
         name: form.name.trim(),
         email: form.email.trim(),
-        address: form.address.trim(),
-        // LP2 extra fields captured
-        willing_to_sell: form.willing_to_sell || null,
-        price_expectation: form.price_expectation || null,
-        move_timing: form.move_timing || null
+        address: form.address.trim()
       }
+      
+      console.log('Submitting payload:', payload)
 
       const { error } = await supabase
         .from('homepilot_leads')
         .insert([payload])
 
       if (error) {
-        setToast({ show: true, type: 'error', message: 'Er is iets misgegaan! Probeer het opnieuw.' })
+        console.error('Supabase error:', error)
+        setToast({ show: true, type: 'error', message: `Er is iets misgegaan: ${error.message}` })
       } else {
         setSubmitted(true)
         setToast({ show: true, type: 'success', message: 'Bedankt! We nemen contact op.' })
@@ -70,7 +72,8 @@ export default function LP2() {
         setTimeout(() => setSubmitted(false), 2000)
       }
     } catch (err) {
-      setToast({ show: true, type: 'error', message: 'Netwerkfout. Probeer het opnieuw.' })
+      console.error('Form submission error:', err)
+      setToast({ show: true, type: 'error', message: `Netwerkfout: ${err.message}` })
     } finally {
       setSubmitting(false)
       setTimeout(() => setToast({ show: false, type: '', message: '' }), 3000)
@@ -95,10 +98,16 @@ export default function LP2() {
         <div className="container mx-auto px-4 pt-16 text-center">
           <h1 className="text-5xl md:text-6xl font-bold text-white mb-8 max-w-[900px] mx-auto">Uw woning trekt aandacht!<br /> Er is iemand die serieuze interesse heeft in uw huis.</h1>
           <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto leading-relaxed mb-0 intro">
-            Ontvang vrijblijvend het bod van deze geïnteresseerde.<br />
-            Uiteraard zonder verkoopverplichting en zonder direct contact met de potentiële koper.<br /><br />
+            Ontvang vrijblijvend het bod van deze geïnteresseerde. Uiteraard zonder verkoopverplichting en zonder direct contact met de potentiële koper.<br /><br />
           </p>
         </div>
+        <div className="max-w-4xl mx-auto mb-8">
+            <img 
+              src={heroImage}
+              alt="HomePilot Header Visual" 
+              className="w-full h-auto rounded-lg shadow-2xl"
+            />
+          </div>
       </section>
 
       {/* Form over edge */}
@@ -112,9 +121,9 @@ export default function LP2() {
                   <label className="sr-only" htmlFor="salutation">Aanhef</label>
                   <select id="salutation" name="salutation" value={form.salutation} onChange={handleChange} required className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600">
                     <option value="">Aanhef</option>
-                    <option value="Mr">Dhr.</option>
-                    <option value="Mrs">Mevr.</option>
-                    <option value="Fam">Fam.</option>
+                    <option value="mr">Dhr.</option>
+                    <option value="mrs">Mevr.</option>
+                    <option value="fam">Fam.</option>
                   </select>
                 </div>
                 <input name="name" value={form.name} onChange={handleChange} placeholder="Achternaam" required className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600" />
@@ -158,7 +167,7 @@ export default function LP2() {
                   </button>
                 ) : (
                   <button type="submit" disabled={submitting} className="w-full bg-[#30A661] text-white font-semibold py-4 px-6 rounded-lg hover:bg-[#0B2918] focus:ring-4 focus:ring-blue-300 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed transform hover:scale-105 active:scale-95">
-                    {submitting ? 'Versturen...' : submitted ? 'Verstuurd' : 'Opslaan'}
+                    {submitting ? 'Versturen...' : submitted ? 'Verstuurd' : 'Ja, laat me vrijblijvend meer weten'}
                   </button>
                 )}
                 <p className="text-xs text-gray-500 text-center mt-3">Uw gegevens worden uitsluitend gebruikt om u verder te informeren.</p>
