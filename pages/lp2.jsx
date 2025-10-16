@@ -28,8 +28,15 @@ export default function LP2() {
 
   async function handleSubmit(e) {
     e.preventDefault()
-    // If extras not shown yet, move to step 2 instead of submitting
+    
+    // If extras not shown yet, validate step 1 fields and move to step 2
     if (!showExtras) {
+      // Check if required fields are filled
+      if (!form.salutation || !form.name || !form.email || !form.address) {
+        setToast({ show: true, type: 'error', message: 'Vul alle verplichte velden in.' })
+        setTimeout(() => setToast({ show: false, type: '', message: '' }), 3000)
+        return
+      }
       setShowExtras(true)
       return
     }
@@ -146,7 +153,7 @@ export default function LP2() {
 
                 {/* CTA */}
                 {!showExtras ? (
-                  <button type="button" onClick={() => setShowExtras(true)} className="w-full bg-[#30A661] text-white font-semibold py-4 px-6 rounded-lg hover:bg-[#0B2918] focus:ring-4 focus:ring-blue-300 transition-all duration-200">
+                  <button type="submit" className="w-full bg-[#30A661] text-white font-semibold py-4 px-6 rounded-lg hover:bg-[#0B2918] focus:ring-4 focus:ring-blue-300 transition-all duration-200">
                     Volgende
                   </button>
                 ) : (
@@ -164,6 +171,15 @@ export default function LP2() {
       <footer className="container mx-auto px-4 py-8 text-center mt-24">
         <p className="text-gray-600 text-sm">© {new Date().getFullYear()} HomePilot. Uw woning, hun droom.</p>
       </footer>
+
+      {/* Toast notification */}
+      {toast.show && (
+        <div className={`fixed top-4 right-4 z-50 px-6 py-3 rounded-lg shadow-lg ${
+          toast.type === 'error' ? 'bg-red-500 text-white' : 'bg-green-500 text-white'
+        }`}>
+          {toast.message}
+        </div>
+      )}
     </div>
   )
 }
